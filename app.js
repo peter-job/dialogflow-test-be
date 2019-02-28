@@ -1,11 +1,12 @@
-const app = require("express")();
-const bodyParser = require("body-parser");
-const { getLocation } = require("./controllers");
+const app = require('express')();
+const bodyParser = require('body-parser');
+const {getLocation, postLocation} = require('./controllers');
 
 app.use(bodyParser.json());
-app.get("/api", getLocation);
+app.get('/api', getLocation);
+app.post('/api', postLocation);
 app.use((err, req, res, next) => {
-  res.status(500).send({ err: err.toString() });
+	res.status(500).send({err: err.toString()});
 });
 
 module.exports = app;
