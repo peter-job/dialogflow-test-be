@@ -1,7 +1,9 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const {getLocation, postLocation} = require('./controllers');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.get('/api', getLocation);
 app.post('/api', postLocation);
